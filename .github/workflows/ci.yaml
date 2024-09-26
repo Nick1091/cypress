@@ -1,4 +1,4 @@
-name: CI
+name: Run Cypress Tests with Report
 
 on:
   push:
@@ -9,31 +9,35 @@ on:
       - main
 
 jobs:
-  test:
+  cypress-tests:
     runs-on: ubuntu-latest
-    
+
     steps:
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Set up Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '20'
+          node-version: '18'
 
       - name: Install dependencies
         run: npm install
 
-      - name: Run tests
+      - name: Start dev server
+        run: npm run dev &
+      
+      - name: Wait for dev server to be ready
+        run: npx wait-on http://localhost:3000
+
+      - name: Run Cypress tests
         run: npx cypress run
 
-      - name: Generate test report only if tests failed
-        if: failure()
-        run: npx cypress run --reporter mochawesome
+      - name: Generate Cypress report with mochawesome
+        run: npm run generate-report
 
       - name: Upload test results
-        if: failure()
         uses: actions/upload-artifact@v3
         with:
           name: test-results
-          path: cypress/reports/* 
+          path: cypress/reports/*.html

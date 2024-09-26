@@ -1,5 +1,4 @@
 import { defineConfig } from 'cypress';
-import fs from 'fs';
 
 export default defineConfig({
   e2e: {
@@ -11,18 +10,11 @@ export default defineConfig({
       config.reporterOptions = {
         reporterEnabled: 'mochawesome',
         mochawesomeReporterOptions: {
-          reportDir: 'cypress/reports',
           overwrite: false,
           html: true,
           json: true,
         },
       };
-
-      on('after:spec', (_, results) => {
-        if (results && results.stats.failures === 0) {
-          fs.rmdirSync('cypress/reports', { recursive: true });
-        }
-      });
 
       return config;
     },

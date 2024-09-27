@@ -4,12 +4,13 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --port 3000",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
     "test": "cypress run",
-    "generate-report": "cypress run --reporter mochawesome"
+    "generate-report": "cypress run --reporter mochawesome",
+    "start": "vite preview --host --port 3000"
   },
   "dependencies": {
     "react": "^18.3.1",

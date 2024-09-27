@@ -46,7 +46,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     needs: cypress-tests
-    if: github.ref == 'refs/heads/main' && success()
+    if: success()
 
     steps:
       - name: Checkout code

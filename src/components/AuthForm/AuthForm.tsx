@@ -18,8 +18,8 @@ export const AuthForm: React.FC = () => {
   return (
     <div>
       <h1>Login</h1>
-      <form onSubmit={handleSubmit}>
-        <div>
+      <form onSubmit={handleSubmit} style={{ display: 'flex', gap: '30px', flexDirection: 'column' }}>
+        <div style={{ display: 'flex', gap: '30px' }}>
           <label htmlFor="username">Username:</label>
           <input
             type="text"
@@ -29,7 +29,7 @@ export const AuthForm: React.FC = () => {
             required
           />
         </div>
-        <div>
+        <div style={{ display: 'flex', gap: '30px' }}>
           <label htmlFor="password">Password:</label>
           <input
             type="password"

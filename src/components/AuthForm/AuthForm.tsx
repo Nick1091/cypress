@@ -16,7 +16,7 @@ export const AuthForm: React.FC = () => {
   };
 
   return (
-    <div style={{ background: "#f3d6d699"}}>
+    <div>
       <h1>Login</h1>
       <form
         onSubmit={handleSubmit}

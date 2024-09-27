@@ -16,9 +16,12 @@ export const AuthForm: React.FC = () => {
   };
 
   return (
-    <div>
+    <div style={{ background: "#f3d6d699"}}>
       <h1>Login</h1>
-      <form onSubmit={handleSubmit} style={{ display: 'flex', gap: '30px', flexDirection: 'column' }}>
+      <form
+        onSubmit={handleSubmit}
+        style={{ display: 'flex', gap: '30px', flexDirection: 'column' }}
+      >
         <div style={{ display: 'flex', gap: '30px' }}>
           <label htmlFor="username">Username:</label>
           <input
